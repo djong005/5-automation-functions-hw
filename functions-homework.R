@@ -79,8 +79,6 @@ plus_minus_SD(x)
 # Use a map function to run the new function on x, y, and z with 1 SD
 
 
-?map
-
 ds <- select(ds, c("x","y","z"))
 map(ds, plus_minus_SD)
 
