@@ -18,6 +18,16 @@ ds <- tibble(id, x, y, z)
 #Write a function called "limit_replace" that replaces values less than 2 or greater than 8 with NA
 #The function should take a vector as input and return the replaced-vector as an output
 #Then, run the function on x and save the results to a new vector "x_replace" to show it worked
+limit_replace <- function(lr) {
+  if (lr < 2) {
+    replace(lr, "NA")
+  } else if (x > 8) {
+    replace(lr, "NA")
+  } else {
+    return(lr)
+  }
+}
+
 
 limit_replace <- function(vector) {
   a <- ifelse(vector < "2", "NA", vector)
@@ -26,6 +36,9 @@ limit_replace <- function(vector) {
 }
 
 x_replace <- limit_replace(x)
+
+limit_replace(x)
+
 
 ### Question 2 ---------- 
 
