@@ -1,7 +1,7 @@
 #PSYC 259 Homework - Writing functions and iteration
 #For full credit, answer at least 5/7 questions
 
-#List names of students collaborating with: 
+#List names of students collaborating with: Sarah
 
 ### SETUP: RUN THIS BEFORE STARTING ----------
 library(tidyverse)
@@ -18,6 +18,26 @@ ds <- tibble(id, x, y, z)
 #Write a function called "limit_replace" that replaces values less than 2 or greater than 8 with NA
 #The function should take a vector as input and return the replaced-vector as an output
 #Then, run the function on x and save the results to a new vector "x_replace" to show it worked
+limit_replace <- function(lr) {
+  if (lr < 2) {
+    replace(lr, "NA")
+  } else if (x > 8) {
+    replace(lr, "NA")
+  } else {
+    return(lr)
+  }
+}
+
+
+limit_replace <- function(vector) {
+  a <- ifelse(vector < "2", "NA", vector)
+  b <- ifelse(a > "8", "NA", a)
+  return(b)
+}
+
+x_replace <- limit_replace(x)
+
+limit_replace(x)
 
 
 ### Question 2 ---------- 
@@ -25,7 +45,13 @@ ds <- tibble(id, x, y, z)
 #Make a new version of limit_replace includes arguments for a lower boundary and an upper boundary
 #so that the limits can be specified (instead of being hard coded as 2 and 8)
 #Run the function on vector y with boundaries 4 and 6, saving the results to a new vector "y_replace"
+limit_replace2 <- function(vector, b1, b2) {
+  c <- ifelse(vector < b1, "NA", vector)
+  d <- ifelse(c > b2, "NA", c)
+  return(d)
+}
 
+y_replace <- limit_replace2(y, 4, 6)
 
 ### Question 3 ----------
 
@@ -37,9 +63,23 @@ ds <- tibble(id, x, y, z)
 #Running plus_minus_SD(x) should produce: $lower 2.142724 $upper 8.048324
 
 
+num_of_SDs <- function(x) sd(x)
+
+plus_minus_SD <- function(vector, sd = NULL) {
+  a <- mean(vector)
+  b <- ifelse(is.null(sd), 1, sd)
+  c <- list(lower = a - b*num_of_SDs(vector), upper = a + b*num_of_SDs(vector))
+  return(c)
+}
+
+plus_minus_SD(x)
+
+
 ### Question 4 ----------
 # Use a map function to run the new function on x, y, and z with 1 SD
 
+ds <- select(ds, c("x","y","z"))
+map(ds, plus_minus_SD)
 
 ### Question 5 ----------
 
